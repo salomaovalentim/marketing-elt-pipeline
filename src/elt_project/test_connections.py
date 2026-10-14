@@ -37,7 +37,7 @@ def test():
     print("\n--- 2. A testar ligação ao PostgreSQL ---")
     try:
         url = f"postgresql://{DB_USER}:{DB_PASS}@{DB_HOST}:{DB_PORT}/{DB_NAME}"
-        engine = create_engine(url)
+        engine = create_engine(url, connect_args={"connect_timeout": 5})
         with engine.connect() as conn:
             versao = conn.execute(text("SELECT version();")).fetchone()
             print("[OK] PostgreSQL conectado com sucesso!")
