@@ -1,0 +1,22 @@
+# Ambientes Virtuais e Caches
+.venv/
+__pycache__/
+*.py[oc]
+
+# Segredos e Configurações Locais (CRÍTICO)
+.env
+.env.*
+!.env.example
+*.user.yml
+
+# dbt Artifacts e Logs
+dbt_project/target/
+dbt_project/dbt_packages/
+dbt_project/logs/
+logs/
+
+# Ficheiros de Sistema e IDE
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

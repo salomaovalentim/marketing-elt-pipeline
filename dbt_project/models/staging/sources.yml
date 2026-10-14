@@ -1,0 +1,15 @@
+version: 2
+
+sources:
+  - name: raw_data
+    schema: public
+    description: "Tabelas brutas de marketing ingeridas pelo pipeline EL"
+    tables:
+      - name: raw_campaigns
+        description: "Registo de campanhas de marketing"
+      - name: raw_crm_customers
+        description: "Dados de clientes e transacoes do CRM"
+      - name: raw_ad_spend
+        description: "Gastos diarios em anuncios por plataforma"
+      - name: raw_tracking_events
+        description: "Eventos de cliques, impressoes e conversoes"

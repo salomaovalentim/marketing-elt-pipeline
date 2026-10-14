@@ -1,0 +1,31 @@
+version: 2
+
+models:
+  - name: dim_campaigns
+    description: "Dimensão de campanhas de marketing"
+    columns:
+      - name: campaign_id
+        tests:
+          - unique
+          - not_null
+
+  - name: dim_customers
+    description: "Dimensão demográfica de clientes"
+    columns:
+      - name: customer_id
+        tests:
+          - unique
+          - not_null
+
+  - name: fct_marketing_performance
+    description: "Tabela fato agregando métricas e KPIs diários por campanha"
+    columns:
+      - name: campaign_id
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_campaigns')
+              field: campaign_id
+      - name: event_date
+        tests:
+          - not_null
