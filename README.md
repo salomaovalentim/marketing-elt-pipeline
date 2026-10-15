@@ -1,22 +1,22 @@
-# 🚀 Projeto de Engenharia de Dados: Pipeline ELT Fictício
+#  Projeto de Engenharia de Dados: Pipeline ELT Fictício
 
 Este projeto demonstra a construção de um pipeline de dados completo (ELT) utilizando dados fictícios de negócios. O objetivo é simular um ambiente de produção moderno de Engenharia de Dados, cobrindo desde a geração dos dados brutos, armazenamento em Object Storage, carga em um Data Warehouse local e modelagem analítica para tomada de decisão.
 
 ---
 
-## 🏗️ Arquitetura do Projeto
+##  Arquitetura do Projeto
 
 O fluxo de dados foi desenhado seguindo práticas consolidadas de mercado:
 
 1. **Geração de Dados (Python):** Scripts utilizam a biblioteca `Faker` para criar dados fictícios de negócios (ex: clientes, vendas).
-2. **Data Lake (MinIO / S3):** Os dados brutos em formato CSV são ingeridos via Python e armazenados em um bucket do MinIO, simulando um ambiente AWS S3.
+2. **Data Lake (MinIO / S3):** Os dados brutos em formato parquet são ingeridos via Python e armazenados em um bucket do MinIO, simulando um ambiente AWS S3.
 3. **Data Warehouse (PostgreSQL):** Os dados são extraídos do MinIO e carregados na camada de *Staging* do nosso banco de dados PostgreSQL.
 4. **Transformação & Modelagem (dbt):** O dbt (Data Build Tool) se conecta ao Postgres para transformar e limpar os dados brutos, organizando-os em tabelas de *Dimensões* e *Fatos*.
 5. **Visualização (Power BI):** Um dashboard interativo consome os dados modelados (via modo *Import*) para exibição de métricas gerenciais.
 
 ---
 
-## 🛠️ Tecnologias Utilizadas
+##  Tecnologias Utilizadas
 
 * **Python 3.x & uv:** Utilizado o `uv` como gerenciador de pacotes ultrarrápido para gerenciar o ambiente virtual e as bibliotecas (`boto3`, `pandas`, `faker`, `python-dotenv`, `psycopg2-binary`).
 * **MinIO:** Armazenamento de objetos (Object Storage) local compatível com a API do AWS S3.
@@ -27,7 +27,7 @@ O fluxo de dados foi desenhado seguindo práticas consolidadas de mercado:
 
 ---
 
-## 🔗 Portas e Variáveis de Ambiente
+##  Portas e Variáveis de Ambiente
 
 O projeto utiliza um arquivo `.env` dinâmico integrado ao Docker Compose. Para reproduzir o projeto, os seguintes padrões locais são aplicados:
 * **MinIO API Endpoint:** `http://localhost:9000` (Chaves padrão: `minioadmin`)
@@ -35,20 +35,20 @@ O projeto utiliza um arquivo `.env` dinâmico integrado ao Docker Compose. Para 
 
 ---
 
-## 🖼️ Demonstração e Resultados (Portfólio)
+##  Demonstração e Resultados (Portfólio)
 
 ### 1. Infraestrutura Rodando no Docker
-*(COLE AQUI UM PRINT do seu terminal ou do Docker Desktop mostrando os contêineres do MinIO e Postgres ativos)*
+![alt text](imagens/docker_container.png)
 
 ### 2. Data Lake (MinIO Storage)
-*(COLE AQUI UM PRINT do navegador em http://localhost:9001 mostrando os arquivos CSV de dados fictícios dentro do seu bucket)*
+![alt text](imagens/bucket_S3.png)
 
 ### 3. Linhagem de Dados (dbt Docs)
-> 🌐 **[CLIQUE AQUI PARA ACESSAR O DBT DOCS ONLINE](SEU_LINK_DO_GITHUB_PAGES_AQUI)**  
+>  **[CLIQUE AQUI PARA ACESSAR O DBT DOCS ONLINE](SEU_LINK_DO_GITHUB_PAGES_AQUI)**  
 *(COLE AQUI UM PRINT do Gráfico de Linhagem - Lineage Graph - do seu dbt mostrando a transformação das tabelas brutas até as tabelas fatos/dimensões)*
 
 ### 4. CONSULTAS (SQL) 
-*(COLE AQUI UM PRINT da tela principal do seu dashboard do Power BI)*
+![alt text](imagens/consulta_sql.png)
 
 ---
 
