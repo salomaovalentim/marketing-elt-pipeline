@@ -1,7 +1,7 @@
 with spend as (
     select
-        campaign_id,
-        spend_date as event_date,
+        campaign_id::text as campaign_id,
+        cast(spend_date as date) as event_date,
         sum(amount_spent) as total_spend,
         sum(impressions) as total_impressions,
         sum(clicks) as total_clicks
@@ -11,10 +11,21 @@ with spend as (
 
 events as (
     select
-        campaign_id,
+        campaign_id::text as campaign_id,
         cast(event_timestamp as date) as event_date,
-        count(case when event_type = 'conversão/compra' then 1 end) as total_conversions,
-        sum(conversion_value) as total_revenue
+        count(
+            case 
+                when lower(event_type) like '%conver%' or lower(event_type) like '%compra%' 
+                then 1 
+            end
+        ) as total_conversions,
+        sum(
+            case 
+                when lower(event_type) like '%conver%' or lower(event_type) like '%compra%' 
+                then conversion_value 
+                else 0 
+            end
+        ) as total_revenue
     from {{ ref('stg_tracking_events') }}
     group by 1, 2
 ),
@@ -44,26 +55,36 @@ metrics as (
         total_conversions,
         total_revenue,
         round(
-            (total_clicks::numeric / nullif(total_impressions, 0)) * 100, 
+            ((total_clicks::numeric / nullif(total_impressions, 0)) * 100)::numeric, 
             2
         ) as ctr_percentage,
         round(
-            total_spend / nullif(total_clicks, 0), 
+            (total_spend::numeric / nullif(total_clicks, 0))::numeric, 
             2
         ) as cpc,
-        round(
-            total_spend / nullif(total_conversions, 0), 
-            2
+        coalesce(
+            round(
+                (total_spend::numeric / nullif(total_conversions, 0))::numeric, 
+                2
+            ), 
+            0.00
         ) as cpa,
-        round(
-            total_revenue / nullif(total_spend, 0), 
-            2
+        coalesce(
+            round(
+                (total_revenue::numeric / nullif(total_spend, 0))::numeric, 
+                2
+            ), 
+            0.00
         ) as roas,
-        round(
-            ((total_revenue - total_spend) / nullif(total_spend, 0)) * 100, 
-            2
+        coalesce(
+            round(
+                (((total_revenue - total_spend)::numeric / nullif(total_spend, 0)) * 100)::numeric, 
+                2
+            ), 
+            0.00
         ) as roi_percentage
     from joined
 )
 
-select * from metrics
+select *
+from metrics

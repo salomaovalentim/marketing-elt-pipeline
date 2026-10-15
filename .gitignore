@@ -3,7 +3,7 @@
 __pycache__/
 *.py[oc]
 
-# Segredos e Configurações Locais (CRÍTICO)
+# Segredos e Configurações Locais
 .env
 .env.*
 !.env.example
