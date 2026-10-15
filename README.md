@@ -44,8 +44,8 @@ O projeto utiliza um arquivo `.env` dinâmico integrado ao Docker Compose. Para 
 ![alt text](imagens/bucket_S3.png)
 
 ### 3. Linhagem de Dados (dbt Docs)
->  **[CLIQUE AQUI PARA ACESSAR O DBT DOCS ONLINE](SEU_LINK_DO_GITHUB_PAGES_AQUI)**  
-*(COLE AQUI UM PRINT do Gráfico de Linhagem - Lineage Graph - do seu dbt mostrando a transformação das tabelas brutas até as tabelas fatos/dimensões)*
+>  **[CLIQUE AQUI PARA ACESSAR O DBT DOCS ONLINE](Shttps://salomaovalentim.github.io/marketing-elt-pipeline/)**  
+![alt text](imagens/dbt_graph.png)
 
 ### 4. CONSULTAS (SQL) 
 ![alt text](imagens/consulta_sql.png)
