@@ -47,7 +47,10 @@ O projeto utiliza um arquivo `.env` dinâmico integrado ao Docker Compose. Para 
 >  **[CLIQUE AQUI PARA ACESSAR O DBT DOCS ONLINE](https://salomaovalentim.github.io/marketing-elt-pipeline/)**  
 ![alt text](imagens/dbt_graph.png)
 
-### 4. CONSULTAS (SQL) 
+### 4. TESTS (dbt tests)
+![alt text](imagens/tests.png)
+
+### 5. CONSULTAS (SQL) 
 ![alt text](imagens/consulta_sql.png)
 
 ---
