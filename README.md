@@ -63,8 +63,8 @@ O projeto utiliza um arquivo `.env` dinâmico integrado ao Docker Compose. Para 
 
 ### Passo 1: Clonar o Repositório
 ```bash
-git clone https://github.com
-cd elt_project
+git clone https://github.com/salomaovalentim/marketing-elt-pipeline.git
+cd marketing-elt-pipeline
 ```
 
 ### Passo 2: Configurar o Arquivo de Ambiente
@@ -102,4 +102,4 @@ dbt run --profiles-dir .
 ```
 
 ---
-Desenvolvido por Salomão Valentim (www.linkedin.com/in/salomaovalentimdata)
+Desenvolvido por Salomão Valentim · [LinkedIn](https://www.linkedin.com/in/salomaovalentimdata)
